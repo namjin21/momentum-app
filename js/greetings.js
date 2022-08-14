@@ -2,6 +2,11 @@ const loginForm = document.getElementById("login-form");
 const loginInput = loginForm.querySelector("input"); // This is same as document.querySelector("#login-form button")
 const greeting = document.querySelector("#greeting");
 
+const weather = document.getElementById("weather");
+const clockElement = document.getElementById("clock");
+const todoField = document.getElementById("todo-field");
+const quote = document.getElementById("quote");
+
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
@@ -17,15 +22,10 @@ const showContentForLoggedInUser = (username) => {
     greeting.textContent = `Hello ${username} 🌍`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
     weather.classList.remove(HIDDEN_CLASSNAME);
-    clock.classList.remove(HIDDEN_CLASSNAME);
+    clockElement.classList.remove(HIDDEN_CLASSNAME);
     todoField.classList.remove(HIDDEN_CLASSNAME);
     quote.classList.remove(HIDDEN_CLASSNAME);
 }
-
-const weather = document.getElementById("weather");
-const clock = document.getElementById("clock");
-const todoField = document.getElementById("todo-field");
-const quote = document.getElementById("quote");
 
 const localStorageUsername = localStorage.getItem(USERNAME_KEY);
 if (localStorageUsername === null) {
