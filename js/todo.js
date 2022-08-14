@@ -23,15 +23,14 @@ const renderTodo = (newTodo) => {
   const li = document.createElement("li");
   const span = document.createElement("span");
   const button = document.createElement("button");
-
   span.innerText = newTodo.text;
-  button.addEventListener("click", (e) => handleToDoDelete(e, newTodo.id));
+  setTrashIconinButton(button);
+  // Add event listener to icon element instead of button element
+  button.querySelector("i").addEventListener("click", (e) => handleToDoDelete(e, newTodo.id));
 
   li.appendChild(span);
   li.appendChild(button);
   toDoList.appendChild(li);
-  
-  setTrashIconinButton(button);
 };
 
 const handleToDoSubmit = (e) => {
@@ -49,8 +48,8 @@ const handleToDoSubmit = (e) => {
 };
 
 const handleToDoDelete = (e, toDoId) => {
-  const button = e.target;
-  const parentLi = button.parentElement.parentElement;
+  const button = e.target.parentElement;
+  const parentLi = button.parentElement;
   parentLi.remove();
 
   toDos = toDos.filter((toDo) => toDo.id !== toDoId);
