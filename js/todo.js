@@ -9,18 +9,29 @@ const saveToDos = () => {
   localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 };
 
+const setTrashIconinButton = (button) => {
+  const trashIcon = document.createElement("i");
+  trashIcon.classList.add('fa-solid');
+  trashIcon.classList.add('fa-trash-can');
+  trashIcon.classList.add('fa-sm');
+  
+  button.appendChild(trashIcon);
+  button.classList.add("remove-button");
+};
+
 const renderTodo = (newTodo) => {
   const li = document.createElement("li");
   const span = document.createElement("span");
   const button = document.createElement("button");
 
   span.innerText = newTodo.text;
-  button.innerText = "❌";
   button.addEventListener("click", (e) => handleToDoDelete(e, newTodo.id));
 
   li.appendChild(span);
   li.appendChild(button);
   toDoList.appendChild(li);
+  
+  setTrashIconinButton(button);
 };
 
 const handleToDoSubmit = (e) => {
@@ -39,9 +50,8 @@ const handleToDoSubmit = (e) => {
 
 const handleToDoDelete = (e, toDoId) => {
   const button = e.target;
-  const parentLi = button.parentElement;
+  const parentLi = button.parentElement.parentElement;
   parentLi.remove();
-  // toDoList.removeChild(parentLi);
 
   toDos = toDos.filter((toDo) => toDo.id !== toDoId);
   saveToDos();
@@ -54,5 +64,4 @@ if (toDoListLocalStorage) {
   const parsedToDos = JSON.parse(toDoListLocalStorage);
   toDos = parsedToDos;
   parsedToDos.map((toDoObj) => renderTodo(toDoObj));
-  // parsedToDos.foreach(renderTodo);
 }

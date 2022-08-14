@@ -1,11 +1,10 @@
 const images = [
-    "gyeongbok.jpg",
-    "paris.jpg",
-    "victoria.jpg",
+    "stars.jpg",
+    "canyon.jpg",
+    "mountain.jpg",
+    "woods.jpg",
 ]
 
 const selectedImg = images[Math.floor(Math.random() * images.length)];
-const imgElement = document.createElement("img");
-imgElement.src = `img/${selectedImg}`;
 
-document.body.appendChild(imgElement);
+document.body.background = `./img/${selectedImg}`;
