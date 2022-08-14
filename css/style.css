@@ -11,6 +11,7 @@ html, body {
     text-align: center;
     font-family: 'Poppins', sans-serif;
     color:var(--text-color);
+    display: inline-block;
 }
 
 .hidden {
